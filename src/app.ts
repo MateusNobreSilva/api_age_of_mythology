@@ -5,7 +5,7 @@ import express, { Request, Response } from 'express';
 import { exit } from 'process';
 const bodyParser = require('body-parser');
 const db = require("./db/database");
-
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(express.json());
+app.use(cors());
 
 
 app.get("/", (req, res) => {
@@ -37,6 +38,6 @@ app.post("/api/adicionarReliquias", async function (req, res) {
   //  return res.sendStatus(200)
 });
 
-app.listen(3000, () => {
+app.listen(3333, () => {
     console.log("Aplicação de TS + Express funcionando!");
 });
